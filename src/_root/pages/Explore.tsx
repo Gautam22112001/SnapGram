@@ -1,6 +1,6 @@
 import SearchResults from "@/components/shared/SearchResults";
 import { Input } from "@/components/ui/input";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import GridPostList from "./GridPostList";
 import useDebounce from "@/hooks/useDebounce";
 import {
@@ -8,7 +8,6 @@ import {
   useSearchPosts,
 } from "@/lib/react-query/queriesAndMutations";
 import Loader from "@/components/shared/Loader";
-import { searchPosts } from "@/lib/appwrite/api";
 import { useInView } from "react-intersection-observer";
 
 const Explore = () => {

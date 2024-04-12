@@ -1,7 +1,26 @@
-import React from "react";
+import Loader from "@/components/shared/Loader";
+import { useGetCurrentUser } from "@/lib/react-query/queriesAndMutations";
+import GridPostList from "./GridPostList";
 
 const LikedPosts = () => {
-  return <div>LikedPosts</div>;
+  const { data: currentUser } = useGetCurrentUser();
+
+  if (!currentUser)
+    return (
+      <div className="flex-center w-full h-full">
+        <Loader />
+      </div>
+    );
+
+  return (
+    <>
+      {currentUser.liked.length === 0 && (
+        <p className="text-light-4">No liked posts</p>
+      )}
+
+      <GridPostList posts={currentUser.liked} showStats={false} />
+    </>
+  );
 };
 
 export default LikedPosts;
